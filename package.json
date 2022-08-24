@@ -1,0 +1,24 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "todo list application for development practice",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanKempt/Todo-List.git"
+  },
+  "author": "Sean Kempt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanKempt/Todo-List/issues"
+  },
+  "homepage": "https://github.com/SeanKempt/Todo-List#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
