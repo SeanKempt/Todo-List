@@ -1,3 +1,40 @@
 body {
-    background-color: black;
+    display: block;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: .5fr repeat(7, 1fr) .5fr;
+    grid-template-rows: .5fr repeat(7, 1fr) .5fr;
+    grid-template-areas: 
+    "header header header header header header header header header"
+    "sidebar main main main main main main main main"
+    "sidebar main main main main main main main main"
+    "sidebar main main main main main main main main"
+    "sidebar main main main main main main main main"
+    "sidebar main main main main main main main main"
+    "sidebar main main main main main main main main"
+    "sidebar main main main main main main main main"
+    "footer footer footer footer footer footer footer footer footer";
+    height: 100vh;
+}
+
+#header {
+    grid-area: header;
+    background-color: brown;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    background-color: bisque;
+}
+
+#footer {
+    grid-area: footer;
+    background-color: green;
+}
+
+#main-content {
+    background-color: rgb(101, 124, 216);
+    grid-area: main;
 }

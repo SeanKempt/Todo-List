@@ -6,6 +6,7 @@ const addToLocalStorage = (key, thing) => {
   }
 };
 
+//function that adds a given todo list to the todo list storage array.
 const addToTodoListStorage = function (todo) {
   let todoListStorageEntries = JSON.parse(localStorage.getItem("todoList"));
   if (todoListStorageEntries == null) todoListStorageEntries = [];
@@ -16,6 +17,7 @@ const addToTodoListStorage = function (todo) {
   );
 };
 
+//Adds given project to the projectList in local storage
 const addToProjectListStorage = function (project) {
   let projectListStorageEntries = JSON.parse(
     localStorage.getItem("projectList")
@@ -28,6 +30,7 @@ const addToProjectListStorage = function (project) {
   );
 };
 
+//using to clear the local storage before loading the page for development
 const clearLocalStorage = function () {
   window.localStorage.clear();
 };

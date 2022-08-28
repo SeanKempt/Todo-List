@@ -5,6 +5,7 @@ import {
   addToProjectListStorage,
   clearLocalStorage,
 } from "./modules/localStorage";
+import "../node_modules/normalize.css";
 
 clearLocalStorage();
 addToProjectListStorage(createProject("default", "none"));
