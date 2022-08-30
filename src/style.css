@@ -22,6 +22,12 @@ body {
 #header {
     grid-area: header;
     background-color: brown;
+    display: flex;
+    align-items: center;
+}
+
+#new-todo-btn {
+    margin-left: auto;
 }
 
 #sidebar {
@@ -32,6 +38,7 @@ body {
 #footer {
     grid-area: footer;
     background-color: green;
+    text-align: center;
 }
 
 #main-content {
