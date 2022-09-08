@@ -6,7 +6,7 @@ const addToLocalStorage = (key, thing) => {
   }
 };
 
-//function that adds a given todo list to the todo list storage array.
+//function that adds a given todo to the todo list storage array.
 const addToTodoListStorage = function (todo) {
   let todoListStorageEntries = JSON.parse(localStorage.getItem("todoList"));
   if (todoListStorageEntries == null) todoListStorageEntries = [];

@@ -1,5 +1,6 @@
 import { createTodo } from "./modules/createTodo";
 import { createProject } from "./modules/createProject";
+import { modalEvents, todoModalSubmitEvent } from "./modules/domChanges";
 import {
   addToTodoListStorage,
   addToProjectListStorage,
@@ -8,6 +9,8 @@ import {
 import "../node_modules/normalize.css";
 
 clearLocalStorage();
+modalEvents();
+todoModalSubmitEvent();
 addToProjectListStorage(createProject("default", "none"));
 addToProjectListStorage(createProject("Hello", "friends that say hello"));
 addToTodoListStorage(
@@ -27,4 +30,3 @@ const codingLogic = createProject(
 
 console.log(codingLogic);
 console.log(localStorage);
-console.log(codingLogic.getTodo());
