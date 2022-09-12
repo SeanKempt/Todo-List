@@ -16,11 +16,11 @@ const createTodo = (title, description, dueDate, priority, notes) => {
     div.appendChild(todoDueDate);
     div.appendChild(todoPriority);
     div.appendChild(todoNotes);
-    todoTitle.textContent = this.title;
-    todoDescription.textContent = this.textContent;
-    todoDueDate.textContent = this.dueDate;
-    todoPriority.textContent = this.priority;
-    todoNotes.textContent = this.notes;
+    todoTitle.textContent = `Title: ${this.title}`;
+    todoDescription.textContent = `Description: ${this.textContent}`;
+    todoDueDate.textContent = `Due-Date: ${this.dueDate}`;
+    todoPriority.textContent = `Priority: ${this.priority}`;
+    todoNotes.textContent = `Notes: ${this.notes}`;
     return main;
   };
   return {

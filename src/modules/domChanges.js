@@ -3,12 +3,23 @@ import { addToTodoListStorage } from "./localStorage.js";
 //WARNING: Could be a single point of failure - Am I breaking the loosely coupled principal? maybe?
 let modal = document.getElementById("todo-modal");
 let close = document.getElementsByClassName("close")[0];
+let projectClose = document.getElementsByClassName("close")[1];
 let createtodo = document.getElementById("new-todo-btn");
+let createProject = document.getElementById("new-project-btn");
+let projectModal = document.getElementById("project-modal");
 
 //loads the event listeners for the modal
 const modalEvents = function () {
+  createProject.addEventListener("click", () => {
+    projectModal.style.display = "block";
+  });
+
   createtodo.addEventListener("click", () => {
     modal.style.display = "block";
+  });
+
+  projectClose.addEventListener("click", () => {
+    projectModal.style.display = "none";
   });
 
   close.addEventListener("click", () => {
@@ -16,8 +27,9 @@ const modalEvents = function () {
   });
 
   window.addEventListener("click", (event) => {
-    if (event.target == modal) {
+    if (event.target == modal || event.target == projectModal) {
       modal.style.display = "none";
+      projectModal.style.display = "none";
     }
   });
 };

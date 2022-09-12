@@ -49,6 +49,9 @@ body {
     grid-template-rows: repeat(auto-fill, minmax(250px, 250px));
 }
 
+#new-project-btn {
+    border-radius: 50%;
+}
 
 /* Pulled from my old project: library app */
 .modal {
