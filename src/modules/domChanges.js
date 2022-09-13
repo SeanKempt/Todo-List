@@ -55,6 +55,7 @@ const todoModalSubmitEvent = function () {
       const todoDueDateElement = document.createElement("p");
       const todoPriorityElement = document.createElement("p");
       const todoNotesElement = document.createElement("p");
+      div.classList.add("todo-cards");
       main.appendChild(div);
       div.appendChild(todoTitleElement);
       div.appendChild(todoDescriptionElement);
