@@ -8,7 +8,7 @@ import {
 let modal = document.getElementById("todo-modal");
 let close = document.getElementsByClassName("close")[0];
 let projectClose = document.getElementsByClassName("close")[1];
-let createtodo = document.getElementById("new-todo-btn");
+let createTodoBtn = document.getElementById("new-todo-btn");
 let createProjectBtn = document.getElementById("new-project-btn");
 let projectModal = document.getElementById("project-modal");
 
@@ -18,7 +18,7 @@ const modalEvents = function () {
     projectModal.style.display = "block";
   });
 
-  createtodo.addEventListener("click", () => {
+  createTodoBtn.addEventListener("click", () => {
     modal.style.display = "block";
   });
 
@@ -47,39 +47,54 @@ const todoModalSubmitEvent = function () {
     const todoDueDate = document.getElementById("duedate").value;
     const todoNotes = document.getElementById("notes").value;
     const todoPriority = document.getElementById("priority").value;
-    const createTodoDom = function () {
-      const main = document.getElementById("main-content");
-      const div = document.createElement("div");
-      const todoTitleElement = document.createElement("p");
-      const todoDescriptionElement = document.createElement("p");
-      const todoDueDateElement = document.createElement("p");
-      const todoPriorityElement = document.createElement("p");
-      const todoNotesElement = document.createElement("p");
-      div.classList.add("todo-cards");
-      main.appendChild(div);
-      div.appendChild(todoTitleElement);
-      div.appendChild(todoDescriptionElement);
-      div.appendChild(todoDueDateElement);
-      div.appendChild(todoPriorityElement);
-      div.appendChild(todoNotesElement);
-      todoTitleElement.textContent = `Title: ${todoTitle}`;
-      todoDescriptionElement.textContent = `Description: ${todoDescription}`;
-      todoDueDateElement.textContent = `Due-Date: ${todoDueDate}`;
-      todoPriorityElement.textContent = `Priority: ${todoPriority}`;
-      todoNotesElement.textContent = `Notes: ${todoNotes}`;
-      return main;
-    };
-    addToTodoListStorage(
-      createTodo(
-        todoTitle,
-        todoDescription,
-        todoDueDate,
-        todoPriority,
-        todoNotes
-      )
+    const newTodoItem = createTodo(
+      todoTitle,
+      todoDescription,
+      todoDueDate,
+      todoPriority,
+      todoNotes
     );
-    createTodoDom();
+    addToTodoListStorage(newTodoItem);
+    renderTodo(newTodoItem);
     modal.style.display = "none";
+  });
+};
+
+const renderTodo = (todoItem) => {
+  const main = document.getElementById("main-content");
+  const div = document.createElement("div");
+  const todoTitleElement = document.createElement("p");
+  // const todoDescriptionElement = document.createElement("p");
+  // const todoDueDateElement = document.createElement("p");
+  // const todoPriorityElement = document.createElement("p");
+  // const todoNotesElement = document.createElement("p");
+  div.classList.add("todo-cards");
+  main.appendChild(div);
+  div.appendChild(todoTitleElement);
+  // div.appendChild(todoDescriptionElement);
+  // div.appendChild(todoDueDateElement);
+  // div.appendChild(todoPriorityElement);
+  // div.appendChild(todoNotesElement);
+  div.dataset.id = `${todoItem.id}`;
+  console.log(todoItem);
+  todoTitleElement.textContent = `${todoItem.title}`;
+  // todoDescriptionElement.textContent = `Description: ${todoItem.description}`;
+  // todoDueDateElement.textContent = `Due-Date: ${todoItem.dueDate}`;
+  // todoPriorityElement.textContent = `Priority: ${todoItem.priority}`;
+  // todoNotesElement.textContent = `Notes: ${todoItem.notes}`;
+  todoCardEventListener(div);
+  return main;
+};
+
+//Event listener for the todo item cards that when clicked will search the array for the id of the clicked item and return the object with that same Id
+const todoCardEventListener = (e) => {
+  let todoListStorageEntries = JSON.parse(localStorage.getItem("todoList"));
+  e.addEventListener("click", () => {
+    const divId = e.dataset.id;
+    const result = todoListStorageEntries.filter(
+      (obj) => obj.id === Number(divId)
+    );
+    console.log(result);
   });
 };
 
@@ -108,5 +123,8 @@ const projectModalSubmitEvent = function () {
     projectModal.style.display = "none";
   });
 };
+//add event listener to the div where the todo title(or square) is located
+//When the todo title(or square) is clicked run a function where the specific todotitle ID is found within the todo array
+//Then render the description,priroity,duedate,notes for that object within the div, untill the todotitle(or square) is clicked again
 
 export { modalEvents, todoModalSubmitEvent, projectModalSubmitEvent };
