@@ -1,4 +1,4 @@
-const createProject = (projectName, projectDescription) => {
+const createProject = (projectName) => {
   let todos = [];
   const addTodo = (todo) => {
     todos.push(todo);
@@ -9,7 +9,6 @@ const createProject = (projectName, projectDescription) => {
 
   return {
     projectName,
-    projectDescription,
     getTodo,
     addTodo,
   };

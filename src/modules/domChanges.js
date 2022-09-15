@@ -120,20 +120,14 @@ const projectSubmit = document.getElementById("project-submit");
 const projectModalSubmitEvent = function () {
   projectSubmit.addEventListener("click", () => {
     const projectTitle = document.getElementById("project-title").value;
-    const projectDescription = document.getElementById(
-      "project-description"
-    ).value;
-    const newProjectItem = createProject(projectTitle, projectDescription);
+    const newProjectItem = createProject(projectTitle);
     let createProjectDom = function () {
       const sidebar = document.getElementById("projects-container");
       const div = document.createElement("div");
       const title = document.createElement("h3");
-      const description = document.createElement("p");
       sidebar.appendChild(div);
       div.appendChild(title);
-      div.appendChild(description);
       title.textContent = `${projectTitle}`;
-      description.textContent = `${projectDescription}`;
       return sidebar;
     };
     addToProjectListStorage(newProjectItem);
