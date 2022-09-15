@@ -13,7 +13,7 @@
     <div id="wrapper">
         <header id="header">
             <h1 id="web-title">To-do List</h1>
-            <button type="button" id="new-todo-btn">+ Create New</button>
+            <button type="button" id="new-todo-btn">+ New Todo</button>
         </header>
         <aside id="sidebar">
             <h2>Projects <button title="new-project-button" type="button" id="new-project-btn">+</button></h2>
@@ -23,7 +23,8 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="form-container">
-                    <form>
+                    <form id="todo-form">
+                        <p>Create New Todo</p>
                         <p>
                             <label for="title">Title:</label>
                             <input type="text" id="title" name="title" placeholder="Title for Todo">
