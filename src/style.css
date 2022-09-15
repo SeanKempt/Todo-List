@@ -2,10 +2,18 @@ body {
     display: block;
 }
 
+h3{
+    margin: 0;
+}
+
+input, label {
+    display: block;
+}
+
 #wrapper {
     display: grid;
     grid-template-columns: .25fr repeat(7, 1fr) .5fr;
-    grid-template-rows: .5fr repeat(7, 1fr) .5fr;
+    grid-template-rows: .25fr repeat(7, 1fr) 30px;
     grid-template-areas: 
     "header header header header header header header header header"
     "sidebar sidebar main main main main main main main"
@@ -16,18 +24,22 @@ body {
     "sidebar sidebar main main main main main main main"
     "sidebar sidebar main main main main main main main"
     "footer footer footer footer footer footer footer footer footer";
-    height: 100vh;
+    min-height: 100vh;
+    max-height: auto;
 }
 
 #header {
     grid-area: header;
     background-color: brown;
     display: flex;
+    min-height: 50px;
+    max-height: 55px;
     align-items: center;
 }
 
 #new-todo-btn {
     margin-left: auto;
+    margin-right: 15px;
 }
 
 #sidebar {
@@ -38,16 +50,20 @@ body {
 #footer {
     grid-area: footer;
     background-color: green;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 30px;
 }
 
 #main-content {
     background-color: rgb(101, 124, 216);
     grid-area: main;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(auto-fill, minmax(250px, 250px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 #new-project-btn {
     border-radius: 50%;
@@ -55,6 +71,11 @@ body {
 
 .todo-cards {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    margin: 5px;
 }
 
 /* Pulled from my old project: library app */

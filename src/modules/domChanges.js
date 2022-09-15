@@ -135,8 +135,5 @@ const projectModalSubmitEvent = function () {
     projectModal.style.display = "none";
   });
 };
-//add event listener to the div where the todo title(or square) is located
-//When the todo title(or square) is clicked run a function where the specific todotitle ID is found within the todo array
-//Then render the description,priroity,duedate,notes for that object within the div, untill the todotitle(or square) is clicked again
 
 export { modalEvents, todoModalSubmitEvent, projectModalSubmitEvent };
