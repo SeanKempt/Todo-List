@@ -7,16 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     <link rel="stylesheet" href="../src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c9a7594955.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div id="wrapper">
         <header id="header">
             <h1 id="web-title">To-do List</h1>
-            <button type="button" id="new-todo-btn">+ New Todo</button>
+            <button type="button" id="new-todo-btn"><i class="fa-solid fa-plus"></i> New Todo</button>
         </header>
         <aside id="sidebar">
-            <h2>Projects <button title="new-project-button" type="button" id="new-project-btn">+</button></h2>
+            <h2>Projects <a class="btn" id="new-project-btn"><i class="fa-regular fa-pen-to-square"></i></a></h2>
+            <hr class="spacer">
             <div id="projects-container"></div>
         </aside>
         <div class="modal" id="todo-modal">
@@ -24,7 +29,7 @@
                 <span class="close">&times;</span>
                 <div class="form-container">
                     <form id="todo-form">
-                        <p>Create New Todo</p>
+                        <p id="form-title">New Todo</p>
                         <p>
                             <label for="title">Title:</label>
                             <input type="text" id="title" name="title" placeholder="Title for Todo">
@@ -59,6 +64,7 @@
                 <span class="close">&times;</span>
                 <div class="form-container">
                     <form>
+                        <p id="form-project-header">New Project</p>
                         <p>
                             <label for="title">Project Title:</label>
                             <input type="text" id="project-title" name="title" placeholder="Title for Project">

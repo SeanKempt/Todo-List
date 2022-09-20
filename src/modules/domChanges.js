@@ -63,33 +63,42 @@ const todoModalSubmitEvent = function () {
 const renderTodo = (todoItem) => {
   const main = document.getElementById("main-content");
   const div = document.createElement("div");
+  const detailsBtn = document.createElement("div");
+  const checkboxDiv = document.createElement("div");
   const detailsDiv = document.createElement("div");
-  const todoTitleElement = document.createElement("h3");
+  const todoTitleElement = document.createElement("p");
+  const checkbox = document.createElement("input");
+  const rightChev = `<i class="fa-solid fa-chevron-right"></i>`;
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.classList.add("checkboxes");
   div.classList.add("todo-cards");
   main.appendChild(div);
+  div.appendChild(checkboxDiv);
+  checkboxDiv.appendChild(checkbox);
   div.appendChild(todoTitleElement);
   div.appendChild(detailsDiv);
+  div.appendChild(detailsBtn);
+  detailsBtn.setAttribute("id", "details-btn");
+  detailsBtn.innerHTML = rightChev;
   div.dataset.details = "false";
   div.dataset.id = `${todoItem.id}`;
-  console.log(todoItem);
   todoTitleElement.textContent = `${todoItem.title}`;
-
-  todoCardEventListener(div, detailsDiv);
+  todoCardEventListener(detailsBtn, detailsDiv, div);
   return main;
 };
 
 //Event listener for the todo item cards that when clicked will search the array for the id of the clicked item and return the object with that same Id
-const todoCardEventListener = (e, details) => {
-  e.addEventListener("click", () => {
-    if (e.dataset.details == "false") {
-      renderTodoDetails(e, details);
-      e.dataset.details = "true";
+const todoCardEventListener = (btn, details, div) => {
+  btn.addEventListener("click", () => {
+    if (div.dataset.details == "false") {
+      renderTodoDetails(div, details);
+      div.dataset.details = "true";
     } else {
       //removes the child nodes of the details div but keeps the details div in place for when we re-append the details to the card.
       while (details.hasChildNodes()) {
         details.removeChild(details.firstChild);
       }
-      e.dataset.details = "false";
+      div.dataset.details = "false";
     }
   });
 };

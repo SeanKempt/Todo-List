@@ -1,5 +1,6 @@
 body {
     display: block;
+    font-family: 'Roboto', sans-serif;
 }
 
 h3{
@@ -28,6 +29,11 @@ input, label {
     max-height: auto;
 }
 
+#todo-submit {
+   margin-left: 15%;
+   width: 60%;
+}
+
 #header {
     grid-area: header;
     background-color: brown;
@@ -47,6 +53,10 @@ input, label {
     background-color: bisque;
 }
 
+#sidebar>h2 {
+    text-align: center;
+}
+
 #footer {
     grid-area: footer;
     background-color: green;
@@ -54,6 +64,11 @@ input, label {
     justify-content: center;
     align-items: center;
     max-height: 30px;
+}
+
+#project-submit {
+    width: 60%;
+    margin-left: 20%;
 }
 
 #main-content {
@@ -66,22 +81,42 @@ input, label {
 
 
 #new-project-btn {
-    border-radius: 50%;
+    background-color: lightgrey;
+    border: 1px solid buttonborder;
+    padding: 3px;
+    border-radius: 5px;
 }
 
-#todo-form {
-    /* display: flex;
-    flex-direction: column;
-    flex: 0; */
+#form-title {
+    text-align: center;
+}
+
+#form-project-header {
+    text-align: center;
+}
+
+#details-btn {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.checkboxes {
+    margin: 10px;
+}
+
+.spacer {
+    width: 75%;
+    border: solid 0.1px black;
 }
 
 .todo-cards {
     background-color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: 60%;
     margin: 5px;
+    border-radius: 5px;
+    align-items: center;
+
 }
 
 /* Pulled from my old project: library app */
@@ -110,7 +145,7 @@ input, label {
 .close {
     color: #aaa;
     float: right;
-    font-size: 2vw;
+    font-size: 1vw;
     font-weight: bold;
 }
 
