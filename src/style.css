@@ -113,8 +113,9 @@ input, label {
     background-color: white;
     display: flex;
     width: 60%;
-    margin: 5px;
-    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     align-items: center;
 
 }
@@ -154,4 +155,13 @@ input, label {
   color: red;
   text-decoration: none;
   cursor: pointer;
+}
+
+.todo-details {
+    background-color: rgb(242, 242, 242);
+    width: 60%;
+    border: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }

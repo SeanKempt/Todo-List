@@ -71,34 +71,47 @@ const renderTodo = (todoItem) => {
   const rightChev = `<i class="fa-solid fa-chevron-right"></i>`;
   checkbox.setAttribute("type", "checkbox");
   checkbox.classList.add("checkboxes");
+  detailsDiv.classList.add("todo-details");
+  detailsBtn.classList.add("btn-icon");
   div.classList.add("todo-cards");
   main.appendChild(div);
   div.appendChild(checkboxDiv);
   checkboxDiv.appendChild(checkbox);
   div.appendChild(todoTitleElement);
-  div.appendChild(detailsDiv);
   div.appendChild(detailsBtn);
+  main.appendChild(detailsDiv);
   detailsBtn.setAttribute("id", "details-btn");
   detailsBtn.innerHTML = rightChev;
   div.dataset.details = "false";
   div.dataset.id = `${todoItem.id}`;
   todoTitleElement.textContent = `${todoItem.title}`;
+  //details btn is the drop down; details div is the div with the description etc.; div is the card container.
   todoCardEventListener(detailsBtn, detailsDiv, div);
   return main;
 };
 
 //Event listener for the todo item cards that when clicked will search the array for the id of the clicked item and return the object with that same Id
 const todoCardEventListener = (btn, details, div) => {
+  const downChev = `<i class="fa-solid fa-chevron-down"></i>`;
+  const rightChev = `<i class="fa-solid fa-chevron-right"></i>`;
   btn.addEventListener("click", () => {
     if (div.dataset.details == "false") {
       renderTodoDetails(div, details);
+      btn.innerHTML = downChev;
       div.dataset.details = "true";
     } else {
       //removes the child nodes of the details div but keeps the details div in place for when we re-append the details to the card.
       while (details.hasChildNodes()) {
         details.removeChild(details.firstChild);
       }
+      btn.innerHTML = rightChev;
       div.dataset.details = "false";
+    }
+    //adds the collapsable effect to the todo-details div
+    if (details.style.maxHeight) {
+      details.style.maxHeight = null;
+    } else {
+      details.style.maxHeight = details.scrollHeight + "px";
     }
   });
 };
@@ -133,7 +146,7 @@ const projectModalSubmitEvent = function () {
     let createProjectDom = function () {
       const sidebar = document.getElementById("projects-container");
       const div = document.createElement("div");
-      const title = document.createElement("h3");
+      const title = document.createElement("p");
       sidebar.appendChild(div);
       div.appendChild(title);
       title.textContent = `${projectTitle}`;
