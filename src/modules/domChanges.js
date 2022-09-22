@@ -3,7 +3,9 @@ import { createProject } from "./createProject.js";
 import {
   addToTodoListStorage,
   addToProjectListStorage,
+  getTodoList,
 } from "./localStorage.js";
+import { markTodoComplete } from "./setTodoComplete.js";
 //WARNING: Could be a single point of failure - Am I breaking the loosely coupled principal? maybe?
 let modal = document.getElementById("todo-modal");
 let close = document.getElementsByClassName("close")[0];
@@ -69,6 +71,7 @@ const renderTodo = (todoItem) => {
   const todoTitleElement = document.createElement("p");
   const checkbox = document.createElement("input");
   const rightChev = `<i class="fa-solid fa-chevron-right"></i>`;
+  todoTitleElement.classList.add("todo-title");
   checkbox.setAttribute("type", "checkbox");
   checkbox.classList.add("checkboxes");
   detailsDiv.classList.add("todo-details");
@@ -87,7 +90,20 @@ const renderTodo = (todoItem) => {
   todoTitleElement.textContent = `${todoItem.title}`;
   //details btn is the drop down; details div is the div with the description etc.; div is the card container.
   todoCardEventListener(detailsBtn, detailsDiv, div);
+  checkboxEventListener(checkbox, todoTitleElement);
   return main;
+};
+
+const checkboxEventListener = (element, title) => {
+  element.addEventListener("change", () => {
+    if (element.checked == true) {
+      markTodoComplete(title);
+      title.classList.add("todo-complete");
+    } else {
+      title.classList.remove("todo-complete");
+      markTodoComplete(title);
+    }
+  });
 };
 
 //Event listener for the todo item cards that when clicked will search the array for the id of the clicked item and return the object with that same Id

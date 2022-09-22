@@ -30,9 +30,25 @@ const addToProjectListStorage = function (project) {
   );
 };
 
+const getTodoList = function () {
+  return JSON.parse(localStorage.getItem("todoList"));
+};
+
 //using to clear the local storage before loading the page for development
 const clearLocalStorage = function () {
   window.localStorage.clear();
+};
+
+//todo is the title element from the todoCards
+const editTodoInLocalStorage = function (todo, property, newvalue) {
+  const todoList = getTodoList();
+  const todoId = todo.parentElement.dataset.id;
+  const findObj = (obj) => obj.id == todoId;
+  const objIndex = todoList.findIndex(findObj);
+  todoList[objIndex][property] = newvalue;
+  const newTodoList = todoList;
+  window.localStorage.setItem("todoList", JSON.stringify(newTodoList));
+  console.log(todoList);
 };
 
 export {
@@ -40,6 +56,8 @@ export {
   addToTodoListStorage,
   addToProjectListStorage,
   clearLocalStorage,
+  getTodoList,
+  editTodoInLocalStorage,
 };
 
 // const projectListStorage = [];
