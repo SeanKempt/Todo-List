@@ -1,3 +1,5 @@
+import { renderTodoFromArray } from "./domChanges";
+
 const addToLocalStorage = (key, thing) => {
   if (thing !== String) {
     window.localStorage.setItem(key, JSON.stringify(thing));
@@ -51,6 +53,17 @@ const editTodoInLocalStorage = function (todo, property, newvalue) {
   console.log(todoList);
 };
 
+//checks if there is any data in the todo list array; If there is then it renders the todo cards like normal
+const checkIfDataExists = function () {
+  if (getTodoList() === null) {
+    clearLocalStorage();
+    alert(`hello new user!`);
+  } else {
+    renderTodoFromArray();
+    console.log(`loaded up the todolist!`);
+  }
+};
+
 export {
   addToLocalStorage,
   addToTodoListStorage,
@@ -58,6 +71,7 @@ export {
   clearLocalStorage,
   getTodoList,
   editTodoInLocalStorage,
+  checkIfDataExists,
 };
 
 // const projectListStorage = [];

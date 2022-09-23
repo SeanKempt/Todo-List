@@ -1,7 +1,8 @@
 let id = 0;
-const createTodo = (title, description, dueDate, priority, notes) => {
+const createTodo = (title, description, dueDate, priority, notes, project) => {
   id++;
   let complete = false;
+  project = "Default";
 
   return {
     title,
@@ -11,6 +12,7 @@ const createTodo = (title, description, dueDate, priority, notes) => {
     notes,
     id,
     complete,
+    project,
   };
 };
 

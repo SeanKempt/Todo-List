@@ -174,4 +174,17 @@ const projectModalSubmitEvent = function () {
   });
 };
 
-export { modalEvents, todoModalSubmitEvent, projectModalSubmitEvent };
+//simply goes through the array and renders the todo items from the array.
+const renderTodoFromArray = function () {
+  const todoArray = getTodoList();
+  for (let i = 0; i < todoArray.length; i++) {
+    renderTodo(todoArray[i]);
+  }
+};
+
+export {
+  modalEvents,
+  todoModalSubmitEvent,
+  projectModalSubmitEvent,
+  renderTodoFromArray,
+};
