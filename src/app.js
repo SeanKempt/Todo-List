@@ -6,6 +6,7 @@ import {
 import { checkIfDataExists, clearLocalStorage } from "./modules/localStorage";
 import "../node_modules/normalize.css";
 
+clearLocalStorage();
 checkIfDataExists();
 modalEvents();
 todoModalSubmitEvent();

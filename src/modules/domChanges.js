@@ -6,6 +6,7 @@ import {
   getTodoList,
 } from "./localStorage.js";
 import { markTodoComplete } from "./setTodoComplete.js";
+import { removeTodo } from "./deleteTodo.js";
 //WARNING: Could be a single point of failure - Am I breaking the loosely coupled principal? maybe?
 let modal = document.getElementById("todo-modal");
 let close = document.getElementsByClassName("close")[0];
@@ -66,23 +67,29 @@ const renderTodo = (todoItem) => {
   const main = document.getElementById("main-content");
   const div = document.createElement("div");
   const detailsBtn = document.createElement("div");
+  const deleteBtn = document.createElement("div");
   const checkboxDiv = document.createElement("div");
   const detailsDiv = document.createElement("div");
   const todoTitleElement = document.createElement("p");
   const checkbox = document.createElement("input");
   const rightChev = `<i class="fa-solid fa-chevron-right"></i>`;
+  const trash = `<i class="fa-solid fa-trash-can"></i>`;
   todoTitleElement.classList.add("todo-title");
   checkbox.setAttribute("type", "checkbox");
   checkbox.classList.add("checkboxes");
   detailsDiv.classList.add("todo-details");
   detailsBtn.classList.add("btn-icon");
+  deleteBtn.classList.add("btn-icon");
   div.classList.add("todo-cards");
   main.appendChild(div);
   div.appendChild(checkboxDiv);
   checkboxDiv.appendChild(checkbox);
   div.appendChild(todoTitleElement);
+  div.appendChild(deleteBtn);
   div.appendChild(detailsBtn);
   main.appendChild(detailsDiv);
+  deleteBtn.innerHTML = trash;
+  deleteBtn.setAttribute("id", "delete-btn");
   detailsBtn.setAttribute("id", "details-btn");
   detailsBtn.innerHTML = rightChev;
   div.dataset.details = "false";
@@ -91,6 +98,7 @@ const renderTodo = (todoItem) => {
   //details btn is the drop down; details div is the div with the description etc.; div is the card container.
   todoCardEventListener(detailsBtn, detailsDiv, div);
   checkboxEventListener(checkbox, todoTitleElement);
+  deleteTodoEventListener(deleteBtn, todoTitleElement);
   return main;
 };
 
@@ -129,6 +137,16 @@ const todoCardEventListener = (btn, details, div) => {
     } else {
       details.style.maxHeight = details.scrollHeight + "px";
     }
+  });
+};
+
+const deleteTodoEventListener = function (btn, todo) {
+  btn.addEventListener("click", () => {
+    const todoList = getTodoList();
+    const todoId = todo.parentElement.dataset.id;
+    const findObj = (obj) => obj.id == todoId;
+    const objIndex = todoList.findIndex(findObj);
+    removeTodo(objIndex);
   });
 };
 
