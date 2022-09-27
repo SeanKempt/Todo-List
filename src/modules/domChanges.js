@@ -4,6 +4,7 @@ import {
   addToTodoListStorage,
   addToProjectListStorage,
   getTodoList,
+  getProjectList,
 } from "./localStorage.js";
 import { markTodoComplete } from "./setTodoComplete.js";
 import { removeTodo } from "./deleteTodo.js";
@@ -50,12 +51,14 @@ const todoModalSubmitEvent = function () {
     const todoDueDate = document.getElementById("duedate").value;
     const todoNotes = document.getElementById("notes").value;
     const todoPriority = document.getElementById("priority").value;
+    const todoProject = document.getElementById("project-dropdown").value;
     const newTodoItem = createTodo(
       todoTitle,
       todoDescription,
       todoDueDate,
       todoPriority,
-      todoNotes
+      todoNotes,
+      todoProject
     );
     addToTodoListStorage(newTodoItem);
     renderTodo(newTodoItem);
@@ -181,8 +184,16 @@ const projectModalSubmitEvent = function () {
     const newProjectItem = createProject(projectTitle);
     addToProjectListStorage(newProjectItem);
     createProjectDom(projectTitle);
+    createProjectForDropDown(projectTitle);
     projectModal.style.display = "none";
   });
+};
+
+const createProjectForDropDown = function (title) {
+  const dropDown = document.getElementById("project-dropdown");
+  const option = document.createElement("option");
+  option.textContent = title;
+  dropDown.appendChild(option);
 };
 
 //creates Dom element for project list
@@ -209,10 +220,21 @@ const deleteTodoCard = function (todo) {
   todo.remove();
 };
 
+const renderProjectsToDropDown = function () {
+  const projects = getProjectList();
+  const dropDown = document.getElementById("project-dropdown");
+  projects.forEach((element) => {
+    const option = document.createElement("option");
+    option.textContent = element.projectName;
+    dropDown.appendChild(option);
+  });
+};
+
 export {
   modalEvents,
   todoModalSubmitEvent,
   projectModalSubmitEvent,
   renderTodoFromArray,
   createProjectDom,
+  renderProjectsToDropDown,
 };

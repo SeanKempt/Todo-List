@@ -36,6 +36,10 @@ const getTodoList = function () {
   return JSON.parse(localStorage.getItem("todoList"));
 };
 
+const getProjectList = function () {
+  return JSON.parse(localStorage.getItem("projectList"));
+};
+
 //using to clear the local storage before loading the page for development
 const clearLocalStorage = function () {
   window.localStorage.clear();
@@ -59,7 +63,7 @@ const removeItemLocalStorage = function (item) {
 
 //checks if there is any data in the todo list array; If there is then it renders the todo cards like normal
 const checkIfDataExists = function () {
-  if (getTodoList() === null) {
+  if (getTodoList() === null || getTodoList().length === 0) {
     clearLocalStorage();
     console.log("hello new user!");
   } else {
@@ -77,6 +81,7 @@ export {
   editTodoInLocalStorage,
   checkIfDataExists,
   removeItemLocalStorage,
+  getProjectList,
 };
 
 // const projectListStorage = [];

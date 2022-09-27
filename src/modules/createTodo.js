@@ -2,7 +2,11 @@ let id = 0;
 const createTodo = (title, description, dueDate, priority, notes, project) => {
   id++;
   let complete = false;
-  project = "Default";
+  if (project == "") {
+    project = "Default";
+  } else {
+    project = project;
+  }
 
   return {
     title,
