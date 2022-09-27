@@ -144,9 +144,11 @@ const deleteTodoEventListener = function (btn, todo) {
   btn.addEventListener("click", () => {
     const todoList = getTodoList();
     const todoId = todo.parentElement.dataset.id;
+    const todoElement = todo.parentElement;
     const findObj = (obj) => obj.id == todoId;
     const objIndex = todoList.findIndex(findObj);
     removeTodo(objIndex);
+    deleteTodoCard(todoElement);
   });
 };
 
@@ -177,19 +179,21 @@ const projectModalSubmitEvent = function () {
   projectSubmit.addEventListener("click", () => {
     const projectTitle = document.getElementById("project-title").value;
     const newProjectItem = createProject(projectTitle);
-    let createProjectDom = function () {
-      const sidebar = document.getElementById("projects-container");
-      const div = document.createElement("div");
-      const title = document.createElement("p");
-      sidebar.appendChild(div);
-      div.appendChild(title);
-      title.textContent = `${projectTitle}`;
-      return sidebar;
-    };
     addToProjectListStorage(newProjectItem);
-    createProjectDom();
+    createProjectDom(projectTitle);
     projectModal.style.display = "none";
   });
+};
+
+//creates Dom element for project list
+const createProjectDom = function (name) {
+  const sidebar = document.getElementById("projects-container");
+  const div = document.createElement("div");
+  const title = document.createElement("p");
+  sidebar.appendChild(div);
+  div.appendChild(title);
+  title.textContent = `${name}`;
+  return sidebar;
 };
 
 //simply goes through the array and renders the todo items from the array.
@@ -200,9 +204,15 @@ const renderTodoFromArray = function () {
   }
 };
 
+//removes the HTML element from the document object
+const deleteTodoCard = function (todo) {
+  todo.remove();
+};
+
 export {
   modalEvents,
   todoModalSubmitEvent,
   projectModalSubmitEvent,
   renderTodoFromArray,
+  createProjectDom,
 };

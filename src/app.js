@@ -5,9 +5,10 @@ import {
 } from "./modules/domChanges";
 import { checkIfDataExists, clearLocalStorage } from "./modules/localStorage";
 import "../node_modules/normalize.css";
+import { intialProject } from "./modules/createProject";
 
-clearLocalStorage();
 checkIfDataExists();
+intialProject();
 modalEvents();
 todoModalSubmitEvent();
 projectModalSubmitEvent();
