@@ -196,6 +196,13 @@ const createProjectForDropDown = function (title) {
   dropDown.appendChild(option);
 };
 
+const renderExistingProjects = function () {
+  const projects = getProjectList();
+  projects.forEach((project) => {
+    createProjectDom(project.projectName);
+  });
+};
+
 //creates Dom element for project list
 const createProjectDom = function (name) {
   const sidebar = document.getElementById("projects-container");
@@ -237,4 +244,5 @@ export {
   renderTodoFromArray,
   createProjectDom,
   renderProjectsToDropDown,
+  renderExistingProjects,
 };

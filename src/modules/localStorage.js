@@ -1,4 +1,5 @@
-import { renderTodoFromArray } from "./domChanges";
+import { intialProject } from "./createProject";
+import { renderExistingProjects, renderTodoFromArray } from "./domChanges";
 
 const addToLocalStorage = (key, thing) => {
   if (thing !== String) {
@@ -65,9 +66,11 @@ const removeItemLocalStorage = function (item) {
 const checkIfDataExists = function () {
   if (getTodoList() === null || getTodoList().length === 0) {
     clearLocalStorage();
+    intialProject();
     console.log("hello new user!");
   } else {
     renderTodoFromArray();
+    renderExistingProjects();
     console.log(`loaded up the todolist!`);
   }
 };
