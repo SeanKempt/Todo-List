@@ -101,7 +101,7 @@ input, label {
 }
 
 #delete-btn {
-    margin-left: 65%;
+    margin-left: 220px;
 }
 
 .checkboxes {
@@ -172,4 +172,9 @@ input, label {
 
 .todo-complete {
     text-decoration: line-through;
+}
+
+.todo-title {
+    width: 400px;
+    word-wrap: break-word;
 }

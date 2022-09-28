@@ -73,7 +73,7 @@ const renderTodo = (todoItem) => {
   const deleteBtn = document.createElement("div");
   const checkboxDiv = document.createElement("div");
   const detailsDiv = document.createElement("div");
-  const todoTitleElement = document.createElement("p");
+  const todoTitleElement = document.createElement("div");
   const checkbox = document.createElement("input");
   const rightChev = `<i class="fa-solid fa-chevron-right"></i>`;
   const trash = `<i class="fa-solid fa-trash-can"></i>`;
@@ -211,6 +211,9 @@ const createProjectDom = function (name) {
   sidebar.appendChild(div);
   div.appendChild(title);
   title.textContent = `${name}`;
+  div.addEventListener("click", function () {
+    filterProjects(title.textContent);
+  });
   return sidebar;
 };
 
@@ -227,6 +230,7 @@ const deleteTodoCard = function (todo) {
   todo.remove();
 };
 
+//renders the projects from the project list array to the dropdown in the create todo modal
 const renderProjectsToDropDown = function () {
   const projects = getProjectList();
   const dropDown = document.getElementById("project-dropdown");
@@ -234,6 +238,31 @@ const renderProjectsToDropDown = function () {
     const option = document.createElement("option");
     option.textContent = element.projectName;
     dropDown.appendChild(option);
+  });
+};
+
+//filter sthrough the todolist array to find the todos with the project matching the title of the project
+const filterProjects = function (title) {
+  const todos = getTodoList();
+  const filteredTodos = todos.filter((todo) => todo.project === title);
+  console.log(filteredTodos);
+  if (filteredTodos.length > 1) {
+    clearTodoCards();
+    renderFilteredTodos(filteredTodos);
+  } else {
+    alert(`No todos in this project!`);
+  }
+};
+
+const clearTodoCards = function () {
+  const mainDiv = document.getElementById("main-content");
+  mainDiv.innerHTML = "";
+};
+
+//filters through the given array and renders the item/todo onto the main content div
+const renderFilteredTodos = function (array) {
+  array.forEach((todo) => {
+    renderTodo(todo);
   });
 };
 
