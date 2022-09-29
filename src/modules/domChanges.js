@@ -208,13 +208,32 @@ const createProjectDom = function (name) {
   const sidebar = document.getElementById("projects-container");
   const div = document.createElement("div");
   const title = document.createElement("p");
+  div.classList.add("projectBtn");
+  div.dataset.active = false;
   sidebar.appendChild(div);
   div.appendChild(title);
   title.textContent = `${name}`;
-  div.addEventListener("click", function () {
-    filterProjects(title.textContent);
+  div.addEventListener("click", () => {
+    const btns = document.querySelectorAll(".projectBtn");
+    if (div.dataset.active == "false") {
+      resetProjectList(btns);
+      filterProjects(title.textContent);
+      div.dataset.active = "true";
+      div.classList.add("projectBtnClicked");
+    } else {
+      resetProjectList(btns);
+      clearTodoCards();
+      renderTodoFromArray();
+    }
   });
   return sidebar;
+};
+
+const resetProjectList = (array) => {
+  array.forEach((element) => {
+    element.classList.remove("projectBtnClicked");
+    element.dataset.active = "false";
+  });
 };
 
 //simply goes through the array and renders the todo items from the array.

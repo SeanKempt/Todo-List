@@ -104,6 +104,20 @@ input, label {
     margin-left: 220px;
 }
 
+.projectBtn {
+    background: #ededed;
+    border: 1px solid #ccc;
+    padding: 10px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.projectBtnClicked {
+    background: #e5e5e5;
+    outline: none;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+  }
+
 .checkboxes {
     margin: 10px;
 }
