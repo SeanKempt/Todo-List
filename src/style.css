@@ -32,15 +32,17 @@ input, label {
 #todo-submit {
    margin-left: 15%;
    width: 60%;
+   color:#000000;
 }
 
 #header {
     grid-area: header;
-    background-color: brown;
+    background-color: #14213D;;
     display: flex;
     min-height: 50px;
     max-height: 55px;
     align-items: center;
+    color: #ffffff;
 }
 
 #new-todo-btn {
@@ -50,7 +52,8 @@ input, label {
 
 #sidebar {
     grid-area: sidebar;
-    background-color: bisque;
+    background-color: #FCA311;
+    color: #000000;
 }
 
 #sidebar>h2 {
@@ -59,10 +62,11 @@ input, label {
 
 #footer {
     grid-area: footer;
-    background-color: green;
+    background-color: #14213D;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
     max-height: 30px;
 }
 
@@ -72,7 +76,7 @@ input, label {
 }
 
 #main-content {
-    background-color: rgb(101, 124, 216);
+    background-color: #465362;
     grid-area: main;
     display: flex;
     flex-direction: column;
@@ -102,15 +106,18 @@ input, label {
 
 #delete-btn {
     margin-left: 220px;
+    padding-right: 10px;
 }
 
 .projectBtn {
-    background: #ededed;
+    background: #FFFFFF;
     border: 1px solid #ccc;
     padding: 10px 30px;
     border-radius: 3px;
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
+    color: #000000;
 }
 
 .projectBtnClicked {
@@ -129,13 +136,15 @@ input, label {
 }
 
 .todo-cards {
-    background-color: white;
+    background-color: #FFFFFF;
     display: flex;
+    max-width: 700px;
     width: 60%;
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
     align-items: center;
+    color: #000000;
 
 }
 
@@ -178,6 +187,7 @@ input, label {
 
 .todo-details {
     background-color: rgb(242, 242, 242);
+    max-width: 700px;
     width: 60%;
     border: none;
     max-height: 0;
