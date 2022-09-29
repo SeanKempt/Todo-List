@@ -110,6 +110,7 @@ input, label {
     padding: 10px 30px;
     border-radius: 3px;
     cursor: pointer;
+    user-select: none;
 }
 
 .projectBtnClicked {
