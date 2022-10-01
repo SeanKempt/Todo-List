@@ -264,7 +264,6 @@ const renderProjectsToDropDown = function () {
 const filterProjects = function (title) {
   const todos = getTodoList();
   const filteredTodos = todos.filter((todo) => todo.project === title);
-  console.log(filteredTodos);
   if (filteredTodos.length > 0) {
     clearTodoCards();
     renderFilteredTodos(filteredTodos);
